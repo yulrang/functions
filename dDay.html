@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+
+  
+</style>
+</head>
+<body>
+<form id="formDDay">
+  <label for="dDay">D-Day </label>
+  <input type="date" id="dDay">
+  <button type="button" onclick="selectDDay('#dDay', '#content');">선택</button>
+</form>
+<div class="wrap">
+  <strong id="content"></strong>일 남았습니다.
+</div>
+<script>
+  function selectDDay(date, content){
+    const dateNow = new Date();
+    const now = new Date(dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDate()); //00:00:00 으로 맞추기 위해 year, month, date 직접 지정
+    const dDay = new Date([document.querySelector(date).value, "00:00"]); //00:00:00 으로 맞춰줌
+    
+    document.querySelector(content).textContent = ((dDay - now) / 1000 / 60 / 60 / 24); //밀리세컨 -> 일수로 바꿈
+  }
+</script>
+</body>
+</html>
