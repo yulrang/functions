@@ -6,14 +6,14 @@
   <title>Document</title>
   <style>
     #effect {position:absolute; width:10px; height:20px; overflow:hidden; }
+    #effect + span {display:inline-block; width:10px;}
     #effect b {display:block; transition:500ms all; }
-    #effect b.on {}
   </style>
 </head>
 
 <body>
 <div class="wrap">
-  <span id="effect"></span><span>&nbsp;&nbsp;</span>orem ipsum dolor sit amet consectetur adipisicing elit. A optio assumenda dolorem expedita? Dolor amet totam consequatur illum, iure qui aperiam ut distinctio ad rem commodi! Id error eos ratione.
+  <span id="effect"></span><span></span>orem ipsum dolor sit amet consectetur adipisicing elit. A optio assumenda dolorem expedita? Dolor amet totam consequatur illum, iure qui aperiam ut distinctio ad rem commodi! Id error eos ratione.
 </div>
 <button type="button" onclick="runText('#effect','s')">런!</button>
 <script>
