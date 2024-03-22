@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #effect {position:absolute; width:10px; height:20px; overflow:hidden; }
+    #effect b {display:block; transition:500ms all; }
+    #effect b.on {}
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+  <span id="effect"></span><span>&nbsp;&nbsp;</span>orem ipsum dolor sit amet consectetur adipisicing elit. A optio assumenda dolorem expedita? Dolor amet totam consequatur illum, iure qui aperiam ut distinctio ad rem commodi! Id error eos ratione.
+</div>
+<button type="button" onclick="runText('#effect','s')">런!</button>
+<script>
+
+  function runText(obj, letter){
+    const wrap = document.querySelector(obj);
+    const letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+    let i = 0;
+
+    const word = letter;
+
+    init();
+    drawAni();
+
+    function init(){
+      for(let i=0; i<letters.length; i++){
+        wrap.innerHTML += `<b>${letters[i]}</b>`;
+      }
+      wrap.querySelectorAll("b").forEach(function(o){
+        o.style = `transform:translateY(${0}%)`;
+      })
+    }
+    
+    function drawAni(){
+      let timer = setInterval(() => {
+        wrap.querySelectorAll("b").forEach(function(o){
+          o.style = `transform:translateY(${-i * 100}%)`;
+        })
+        if(letters[i] == word){
+          clearInterval(timer);
+        }
+        i++;
+      },10)
+    }
+}
+</script>
+</body>
+</html>
