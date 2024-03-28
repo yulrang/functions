@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap {display:flex; gap:10px;}
+    .box {width:100px; height:100px; background:#ccc;}
+    .box.on {background:orange;}
+  </style>
+</head>
+
+<body>
+  <div id="relay-wrap" class="wrap">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+</body>
+<script>
+  function relayClass(el, str, ms) {
+    let index = 0;
+    const num = el.children.length;
+
+    const callback = function () {    // 콜백 함수
+      if (index < num) {
+        Object.values(el.children).forEach((e) => {     //객체 값에 대해 forEach
+          e.classList.remove(str);
+        })
+        el.children[index].classList.add(str);
+        index += 1;
+      }
+      else index = 0;
+    }
+
+    setInterval(callback, ms)     // setTimeout : ~ms 후에 실행 / setInterval : ~ms 마다 실행
+  }
+
+  relayClass(document.querySelector('#relay-wrap'), "on", 500);
+
+
+</script>
+
+</html>

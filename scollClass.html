@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {height:500px; margin:10px; background:#ccc;}
+    .box.on {background:orange;}
+    .box.small {height:100px;}
+  </style>
+</head>
+<body>
+  <div id="scrollClass" class="wrap">
+    <div class="box small"></div>
+    <div class="box small"></div>
+    <div class="box small"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+<script>
+
+  window.onload = ()=>{
+    scrollClass();
+  };  
+  document.addEventListener("scroll", scrollClass);
+
+  function scrollClass(e){
+    const objs = document.querySelectorAll("#scrollClass div");
+
+    objs.forEach((obj)=>{
+      obj.classList.remove("on");
+      if (obj.offsetTop >= window.scrollY && obj.offsetTop + obj.clientHeight / 2 < window.scrollY + window.innerHeight){
+        obj.classList.add("on");
+      }
+    })
+  }
+
+</script>
+</body>
+</html>
